@@ -92,7 +92,7 @@ namespace HiHoTool
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            dontSwitch = checkBox1.Checked;
+            
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)

@@ -15,6 +15,19 @@ namespace HiHoFile
         {
             BinaryReader binaryReader = new BinaryReader(new FileStream(fileName, FileMode.Open));
 
+            binaryReader.BaseStream.Position = 0x4;
+            int version = binaryReader.ReadInt32();
+            if (version > 0x1000) // basically if version isn't 1, but we're being safe
+            {
+                dontSwitch = false;
+            }
+            else
+            {
+                dontSwitch = true;
+            }
+            // there is a way to do this in 1 line but i like verbose code
+            binaryReader.BaseStream.Position = 0; // reset ptr
+
             HEL = new Section_HEL(binaryReader);
             MAST = new Section_MAST(binaryReader);
             
